@@ -1,0 +1,20 @@
+<Context>
+	<Resource name="jdbc/testdb"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="root"
+		password="R.p.zy99ba88"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost/TEST"
+		maxActive="8"
+		maxIdle="4"/>
+	<Resource name="jdbc/eventos"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="root"
+		password="R.p.zy99ba88"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost/eventos"
+		maxActive="8"
+		maxIdle="4"/>
+</Context>

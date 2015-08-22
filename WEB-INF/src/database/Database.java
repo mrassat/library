@@ -69,6 +69,47 @@ public class Database {
     return locations;
   }
 
+  public ArrayList<Location> searchLocationsByName (String q) {
+    String query = "Select * from locations where name like '%" + q + "%'";
+
+    ArrayList<Location> locations = new ArrayList<Location>();
+
+    try {
+      Statement stmt = this.conn.createStatement();
+      ResultSet rs = stmt.executeQuery(query);
+
+      while (rs.next()) {
+        Location loc = new Location(
+            rs.getInt("id"),
+            rs.getString("name"),
+            rs.getString("entity"),
+            rs.getString("timetable"),
+            rs.getString("transport"),
+            rs.getString("description"),
+            rs.getString("accessibility"),
+            rs.getString("url"),
+            rs.getString("street"),
+            rs.getString("streettype"),
+            rs.getString("number"),
+            rs.getString("postalcode"),
+            rs.getString("neighborhood"),
+            rs.getString("district"),
+            rs.getString("latitude"),
+            rs.getString("longitude"),
+            rs.getString("phone"),
+            rs.getString("email")
+          );
+
+        locations.add(loc);
+      } 
+    }
+    catch (SQLException sqle) {
+        sqle.printStackTrace();
+    }
+
+    return locations;
+  }
+
   public void close () {
     try {
       this.conn.close();

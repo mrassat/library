@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <web-app>
-    <display-name>Madrid's Libraries</display-name>
+  <display-name>Madrid's Libraries</display-name>
+  <description>
+    This web app will help you find public libraries in Madrid.
+
+    Happy reading!
+  </description>
+
+  <servlet>
+    <servlet-name>List</servlet-name>
     <description>
-      This web app will help you find public libraries in Madrid.
-
-      Happy reading!
     </description>
+    <servlet-class>ListController</servlet-class>
+  </servlet>
 
-    <servlet>
-      <servlet-name>List</servlet-name>
-      <description>
-      </description>
-      <servlet-class>ListController</servlet-class>
-    </servlet>
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <description>
+    </description>
+    <servlet-class>SearchController</servlet-class>
+  </servlet>
 
-    <servlet-mapping>
-      <servlet-name>List</servlet-name>
-      <url-pattern>/list</url-pattern>
-    </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>List</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
 
 </web-app>

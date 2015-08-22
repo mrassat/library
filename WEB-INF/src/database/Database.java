@@ -17,51 +17,59 @@ public class Database {
   }
 
   private void connect () {
-
     try {
       Context ic = new InitialContext();
       Context ec = (Context) ic.lookup("java:comp/env");
 
-      DataSource ds = (DataSource) ec.lookup("jdbc/testdb");
+      DataSource ds = (DataSource) ec.lookup("jdbc/library");
       this.conn = ds.getConnection();
     }
     catch (Exception e) {
       e.printStackTrace();
     }
-    
   }
 
+  public ArrayList<Location> listLocations () {
+    String query = "Select * from locations";
 
-  public ArrayList<Employee> listEmployees () {
-    String query = "Select * from Employees";
-
-    ArrayList<Employee> list = new ArrayList<Employee>();
+    ArrayList<Location> locations = new ArrayList<Location>();
 
     try {
       Statement stmt = this.conn.createStatement();
       ResultSet rs = stmt.executeQuery(query);
 
       while (rs.next()) {
-        int id = rs.getInt("id");
-        int age = rs.getInt("age");
-        String first = rs.getString ("first");
-        String last = rs.getString ("last");
+        Location loc = new Location(
+            rs.getInt("id"),
+            rs.getString("name"),
+            rs.getString("entity"),
+            rs.getString("timetable"),
+            rs.getString("transport"),
+            rs.getString("description"),
+            rs.getString("accessibility"),
+            rs.getString("url"),
+            rs.getString("street"),
+            rs.getString("streettype"),
+            rs.getString("number"),
+            rs.getString("postalcode"),
+            rs.getString("neighborhood"),
+            rs.getString("district"),
+            rs.getString("latitude"),
+            rs.getString("longitude"),
+            rs.getString("phone"),
+            rs.getString("email")
+          );
 
-        Employee emp = new Employee(id, age, first, last);
-
-        list.add(emp);
-        
-      }
-
+        locations.add(loc);
+      } 
     }
     catch (SQLException sqle) {
-      sqle.printStackTrace();
+        sqle.printStackTrace();
     }
 
-    return list;
+    return locations;
+
   }
-
-
 
   public void close () {
     try {

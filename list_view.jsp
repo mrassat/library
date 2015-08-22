@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList"%>
 
 <%
+	String title = (String) request.getAttribute("title");
 	ArrayList<Location> locations = (ArrayList<Location>) request.getAttribute("locations");
 %>
 
@@ -11,6 +12,7 @@
 	<title>Librerias de Madrid</title>
 </head>
 <body>
+	<h1><%= title %></h1>
 	<ul>
 		<% for (Location l : locations) { %>
 			<li> <%= l.name %> </li>

@@ -7,17 +7,19 @@ import database.*;
 import models.*;
 import java.util.ArrayList;
 
-public class ListController extends HttpServlet 
+public class SearchController extends HttpServlet 
 {
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
+    String query = request.getParameter("q");
+
     Database db = new Database();
 
-    ArrayList<Location> locations = db.listLocations();
+    ArrayList<Location> locations = db.searchLocationsByName(query);
     
     db.close();
 
     request.setAttribute("locations", locations);
-    request.setAttribute("title", "Listado");
+    request.setAttribute("title", "Resultados de la busqueda");
     RequestDispatcher rd = request.getRequestDispatcher("list_view.jsp");
 
     rd.forward(request, response);

@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import models.*;
 
 public class Database {
-
+  
   private Connection conn;
-
 
   public Database () {
     connect();
@@ -68,7 +67,6 @@ public class Database {
     }
 
     return locations;
-
   }
 
   public void close () {

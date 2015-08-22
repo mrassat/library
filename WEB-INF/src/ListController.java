@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class ListController extends HttpServlet 
 {
-  
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Database db = new Database();
 
@@ -18,36 +17,10 @@ public class ListController extends HttpServlet
     db.close();
 
     request.setAttribute("locations", locations);
-    RequestDispatcher rd = request.getRequestDispatcher("listview.jsp");
+    RequestDispatcher rd = request.getRequestDispatcher("list_view.jsp");
 
     rd.forward(request, response);
   }
-
-
-
-
-
-
-
-
-
-  // public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
-  //   Database db = new Database();
-
-  //   ArrayList<Employee> list = db.listEmployees();
-
-  //   db.close();
-
-  //   request.setAttribute("employees", list);
-  //   request.setAttribute("optlist", opt);
-
-  //   RequestDispatcher rd = request.getRequestDispatcher("employees.jsp");
-
-  //   rd.forward(request, response);
-
-  // }
-
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        

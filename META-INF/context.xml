@@ -5,7 +5,7 @@
 		username="root"
 		password="pass"
 		driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/library"
+		url="jdbc:mysql://localhost:3307/library"
 		maxActive="8"
 		maxIdle="4"/>
 </Context>

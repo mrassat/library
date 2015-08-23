@@ -22,6 +22,12 @@
     <servlet-class>SearchController</servlet-class>
   </servlet>
 
+<servlet>
+    <servlet-name>Select</servlet-name>
+    <description>
+    </description>
+    <servlet-class>SelectController</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>List</servlet-name>
@@ -31,6 +37,11 @@
   <servlet-mapping>
     <servlet-name>Search</servlet-name>
     <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Select</servlet-name>
+    <url-pattern>/select</url-pattern>
   </servlet-mapping>
 
 </web-app>

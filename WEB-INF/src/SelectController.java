@@ -7,20 +7,18 @@ import database.*;
 import models.*;
 import java.util.ArrayList;
 
-public class SearchController extends HttpServlet 
+public class SelectController extends HttpServlet 
 {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
-    String query = request.getParameter("q");
-
+  
     Database db = new Database();
 
-    ArrayList<Location> locations = db.searchLocationsByDistrict(query);
+    ArrayList<String> districts = db.getDistricts();
     
     db.close();
 
-    request.setAttribute("locations", locations);
-    request.setAttribute("title", "Resultados de la busqueda");
-    RequestDispatcher rd = request.getRequestDispatcher("list_view.jsp");
+    request.setAttribute("districts", districts);
+    RequestDispatcher rd = request.getRequestDispatcher("select_view.jsp");
 
     rd.forward(request, response);
   }
